@@ -32,11 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: ts-prune
         shell: bash
         run:
-          npm run prune --ignore "/*.stories.tsx | src/pages/*" |
+          ts-prune --ignore "/*.stories.tsx | src/pages/*" |
             grep -v -E "src/(app|pages)/.* - (default|GET|dynamic)" |
             grep -v getServerSideProps |
             (! grep -v -E "(ts-prune --ignore|Done in |npm run)")
