@@ -12,7 +12,6 @@ on:
 
 jobs:
   test-cypress:
-    if: ${{ github.ref_name == 'develop' }}
     runs-on: self-hosted
     needs: []
     steps:
