@@ -1,0 +1,30 @@
+name: 'CI'
+
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+  pull_request:
+    branches:
+      - develop
+      - release/*
+
+jobs:
+  test-cypress:
+    if: ${{ github.ref_name == 'develop' }}
+    runs-on: self-hosted
+    needs: [lint, test-unit, test-storybook]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.10.0'
+      - name: set env
+        run: cp .env.test .env.local
+      - uses: cypress-io/github-action@v6
+        with:
+          build: npm run export
+          start: npm run serve
