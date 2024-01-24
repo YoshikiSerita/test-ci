@@ -21,8 +21,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20.10.0'
-      - name: set env
-        run: cp .env.test .env.local
+      # - name: set env
+      #   run: cp .env.test .env.local
       - uses: cypress-io/github-action@v6
         with:
           build: npm run export
