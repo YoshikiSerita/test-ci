@@ -14,7 +14,7 @@ jobs:
   test-cypress:
     if: ${{ github.ref_name == 'develop' }}
     runs-on: self-hosted
-    needs: [lint, test-unit, test-storybook]
+    needs: []
     steps:
       - uses: actions/checkout@v4
         with:
