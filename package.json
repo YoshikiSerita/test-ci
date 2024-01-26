@@ -22,7 +22,8 @@
     "test-storybook": "test-storybook",
     "test-storybook-ci": "npm run build-storybook && npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"npx wait-on tcp:6006 && npm run test-storybook\"",
     "watch:path": "pathpida --ignorePath .gitignore --output src/utils --watch",
-    "generate:path": "pathpida --ignorePath .gitignore --output src/utils"
+    "generate:path": "pathpida --ignorePath .gitignore --output src/utils",
+    "prune": "ts-prune"
   },
   "husky": {
     "hooks": {
@@ -93,6 +94,7 @@
     "prettier": "^3.0.3",
     "storybook": "^7.4.0",
     "ts-node": "^10.8.1",
+    "ts-prune": "^0.10.3",
     "typescript": "^5.3.3"
   },
   "overrides": {
