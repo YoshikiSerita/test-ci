@@ -46,7 +46,7 @@ jobs:
       - run: npm run lint
       - run: npm run tsc
       - run: |
-          output=$(npm run prune | grep -Ev 'used in module|src/pages|cypress/|prune')
+          output=$(npm run prune | grep -Ev 'used in module|src/pages|cypress.config.ts|prune')
           if [ -z "$output" ]; then
             echo "Test passed - no output"
           else
