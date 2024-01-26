@@ -45,11 +45,12 @@ jobs:
         run: npm ci
       - run: npm run lint
       - run: npm run tsc
-      - run: output=$(npm run prune | grep -Ev 'used in module|src\\pages|\\cypress')
-             if [ -z "$output" ]; then
-               echo "Test passed - no output"
-             else
-               echo "Test failed - output detected"
-               echo "$output"
-               exit 1
-             fi
+      - run: |
+          output=$(npm run prune | grep -Ev 'used in module|src\\pages|\\cypress')
+          if [ -z "$output" ]; then
+            echo "Test passed - no output"
+          else
+            echo "Test failed - output detected"
+            echo "$output"
+            exit 1
+          fi
